@@ -1,0 +1,78 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Route Planning</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div id="map" style="width: 100%; height: 600px;"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+    .openPopup();
+
+        // Add markers for origin and destination (sample coordinates)
+        var originMarker = L.marker([ 26.803802578231185, 75.87397125348627]).addTo(map);
+        originMarker.bindPopup('Origin').openPopup();
+
+        var destinationMarker = L.marker([26.806672305120163, 75.89198668910181]).addTo(map);
+        destinationMarker.bindPopup('Destination').openPopup();
+
+         // Initialize the Mapbox Directions control
+         L.Routing.control({
+            waypoints: [
+                L.latLng(26.803802578231185, 75.87397125348627),
+                L.latLng(26.806672305120163, 75.89198668910181)
+            ],
+            routeWhileDragging: true,
+            geocoder: L.Control.Geocoder.nominatim(),
+            router: new L.Routing.mapbox(YOUR_MAPBOX_ACCESS_TOKEN)
+        }).addTo(map);
+
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Route Planning</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+</head>
+<body>
+    <div id="map" style="width: 100%; height: 600px;"></div>
+
+    <script>
+        var map = L.map('map').setView([26.803802578231185, 75.87397125348627], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.Routing.control({
+            waypoints: [
+                L.latLng(26.803802578231185, 75.87397125348627),
+                L.latLng(26.806672305120163, 75.89198668910181)
+            ],
+            routeWhileDragging: true
+        }).addTo(map);
+    </script>
+</body>
+</html>
+
